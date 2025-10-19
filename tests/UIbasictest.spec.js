@@ -1,5 +1,8 @@
  const { test } = require ('@playwright/test');
- const { expect } = require ('../playwright.config');
+ // const { expect } = require ('../playwright.config');
+ import {expect} from '@playwright/test';
+
+ 
 
  test ('First Playwright test', async ({browser})=>
  {
@@ -20,6 +23,20 @@
      await page.goto ("https://www.saucedemo.com/");
     console.log(await page.title());
      //await expect(page).toHaveTitle("Google");
-     page.locator
+     await page.locator('#user-name').fill("standard_user");
+     await page.locator('#password').fill("secret_sauce");
+     await page.locator('#login-button').click();
+    // console.log(await page.locator('[data-test="error"]').textContent());
+    // await expect(page.locator('[data-test="error"]')).toContainText('Epic');
+    page.locator(".inventory_item_name");
+    //console.log(await page.locator(".inventory_item_name").textContent());
+    const items = await page.locator('.inventory_item_name').allTextContents();
+    console.log(items);
+    await expect(items.first()).toHaveText('Sauce Labs Backpack');
+
+
+
+
+
 
  });

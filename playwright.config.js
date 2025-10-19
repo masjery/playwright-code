@@ -9,9 +9,9 @@ import { chromium, defineConfig, devices } from '@playwright/test';
  */
 const config = ({
   testDir: './tests',
-  timeout : 40*1000,
+  timeout : 70*1000,
   expect : {
-    timeout : 40 *1000,
+    timeout : 5000,
 
   },
 
@@ -20,7 +20,10 @@ const config = ({
   use: {
 
     browserName : 'chromium',
-    headless : false
+    headless : false,
+    //screenshot : 'on',
+    //trace: 'retain-on-failure'
+
     
   }, 
     
